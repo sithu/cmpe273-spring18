@@ -33,14 +33,15 @@ Your solution must work with this below command.
 
 ```sh
 # Curl Command
-curl -d "name=Alice" -X POST http://127.0.0.1:3000/items
+curl -i -d "name=Alice" -X POST http://127.0.0.1:3000/items
 ```
 
 _Response_
 
 ```
-201 Created
-...
+HTTP/1.0 201 Created
+....
+Date: Fri, 23 Mar 2018 02:08:20 GMT
 ```
 
 > If the deque (ring) is full and a new item is added, the oldest item MUST be discarded from the deque.
@@ -54,9 +55,12 @@ Example:
 
 _Response_
 
-```
-200 OK
-...
+```sh
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: xxx
+Server: Werkzeug/0.14.1 Python/3.6.4
+Date: Fri, 23 Mar 2018 02:08:20 GMT
 
 
 Alice,Bob,Charlie
@@ -77,8 +81,11 @@ GET http://127.0.0.1:3000/items/0
 _Response_
 
 ```
-200 OK
-...
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: xxx
+Server: Werkzeug/0.14.1 Python/3.6.4
+Date: Fri, 23 Mar 2018 02:08:20 GMT
 
 
 Alice
