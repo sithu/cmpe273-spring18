@@ -86,7 +86,7 @@ Alice
 
 ## Question II
 
-Create a client to the buffer ring REST server from the question I to access its APIs in client.py.
+Create a client for the buffer ring REST server from the question I to access its APIs in client.py.
 
 _Expected Output_
 
