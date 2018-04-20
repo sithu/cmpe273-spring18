@@ -1,6 +1,6 @@
 ## Requirements
 
-You will be building a set of REST APIs for a blockchain crypto-currency. In this assignment, you need to build APIs for the wallet and transaction entities using Flask framework. The data must be persisted into SQLite BD.
+You will be building a set of REST APIs for a blockchain crypto-currency. In this assignment, you need to build APIs for the wallet and transaction entities using Flask framework. The data must be persisted into SQLite DB.
 
 ### What is wallet?
 
