@@ -91,5 +91,5 @@ except KeyboardInterrupt:
     pass
 
 gossip.stop()
-loop.run_until_complete(server.wait_closed())
+loop.run_until_complete(gossip.server.wait_closed())
 loop.close()
