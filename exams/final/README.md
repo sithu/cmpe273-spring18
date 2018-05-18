@@ -39,46 +39,17 @@ You will be implementing the second part (ping-req) from the diagram and dissemi
 
 ![](https://www.brianstorti.com/assets/images/swim/failure-detection.png)
 
-```sh
-The SWIM failure detector algorithm [12] uses two parameters:
-protocol period VU (in time units) and integer W,
-the size of failure detection subgroups. The protocol does
-not require clocks to be synchronized across members, and
-properties of the protocol hold if XU is the average protocol
-period at group members.
-Figure 1 illustrates the working of the protocol at an arbitrary
-member 
- . During each protocol period of length
-VU time units (on 
- ’s local clock), a random member is
-selected from 
- ’s membership list (say 
- ), and a ping
-message sent to it. 
- then waits for a replying ack from
+### Abstract
 
- . If this is not received within a prespecified time-out
-(determined by the message round-trip time, which is chosen
-smaller than the protocol period), 
- indirectly probes
+The SWIM failure detector algorithm uses two parameters: protocol period T (in time units) and integer k, the size of failure detection subgroups. The protocol does not require clocks to be synchronized across members, and properties of the protocol hold if T is the average protocol period at group members.
 
- . 
- selects W members at random and sends each a
-ping-req(
- ) message. Each of these members in turn
-(those that are non-faulty), on receiving this message, pings
+Figure 1 illustrates the working of the protocol at an arbitrary member Mi. During each protocol period of length T time units (on M’s local clock), a random member is
+selected from Mi’s membership list (say Mj), and a ping message sent to it. Mi then waits for a replying ack from
 
- and forwards the ack from 
- (if received) back to
+- If this is not received within a prespecified time-out (determined by the message round-trip time, which is chosen smaller than the protocol period), indirectly probes Mj. Mi selects k members at random and sends each a ping-req(Mj) message. Each of these members in turn (those that are non-faulty), on receiving this message, pings Mj and forwards the ack from Mj (if received) back to Mi.
 
- . At the end of this protocol period, 
- checks if it has
-received any acks, directly from 
- or indirectly through
-one of the W members; if not, it declares 
- as failed in
-its local membership list, and hands this update off to the
-Dissemination Component.
+- At the end of this protocol period, Mi checks if it has received any acks, directly from or indirectly through one of the k members; if not, it declares as failed in
+its local membership list, and hands this update off to the Dissemination Component.
 ```
 
 [More@](https://pdfs.semanticscholar.org/8712/3307869ac84fc16122043a4a313604bd948f.pdf)
